@@ -8,10 +8,13 @@ This feature creates a superlattice potential over a BEC. Two independent lattic
 * Usage Example
 
 ### Features
-
+* Creates a job that can be submitted to the Oqtant Quantum Matter Service. This job is a completeley prepared quantum matter with its landscapes, snapshots and lasers already set.
+* Provides a way to set the potential profile for the superlattice of two independent sinusoidal lattices.
+* Provides a way to prepare a general sinusoidal lattice specified by its potential amplitude and period.
+* Provides a way to prepare a loading sequence for each independent lattice. The loading sequence is specified by a "gaussian" pulse with parameters of delay, edge "sharpness" and hold.
+* An internal algorithm uses the specified two independent lattices to prepare quantum matter landscapes, snapshots and lasers and produce a submittable job.
 
 ### API
-
 #### Name
 #### Usage
 
@@ -25,11 +28,11 @@ This feature creates a superlattice potential over a BEC. Two independent lattic
 
     short = pl.Lattice()
     short.set_potential(pot, period)
-    short.set_loading_seq(delay, rising_edge, hold, falling_edge)
+    short.set_loading_seq(delay, edge, hold)
 
     long = pl.Lattice()
     long.set_potential(pot, period)
-    long.set_loading_seq(delay, rising_edge, hold, falling_edge)
+    long.set_loading_seq(delay, edge, hold,)
 
     pl.set_lattice(long, short)
 
