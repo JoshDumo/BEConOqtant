@@ -59,7 +59,7 @@ Ranges from 0 to 5.8ms
 Combination of _delay, edge, and hold_ should be less than or equal to 6ms, the total duration of the loading seqquence.
 
 #### Name
-##### _PatternedLoader(qmf).get_matter()_
+##### _PatternedLoader(qmf).prepare_matter(name)_
 #### Usage
 This function returns as completely prepared quantum matter object, which can be directly submitted to the Oqtant service.
 
@@ -88,7 +88,7 @@ That is, even with no settings the job is a default matter with IN TRAP duration
 
     pl.set_superlattice(long, short)
 
-    matter = pl.get_matter()
+    matter = pl.prepare_matter("SL #1")
 
     matter.submit(sim=True)
     ```
