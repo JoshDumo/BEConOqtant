@@ -30,7 +30,7 @@ Requires a valid Quantum Matter Factory object.
 ##### _PatternedLoader(qmf).set_superlattice(long, short)_
 #### Usage
 This function sets the superlattice from two independent sinusoidal lattices _long_ and _short_. The preparation of independent lattices is provided by the services:
-1. _PatternedLoader(qmf).Lattice(potential, period, phase, delay, edge hold)_, or
+1. _PatternedLoader(qmf).Lattice(potential, period, phase, delay, edge, hold)_, or
 2.  
     a. _PatternedLoader(qmf).Lattice().set_potential(potential, period, phase)_, and 
 
