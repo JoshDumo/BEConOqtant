@@ -5,9 +5,25 @@ What I am calling the Fritsch method is a way to create dark solitons at arbitra
 * Fritsch, A.R., Lu, M., Reid, G., Piñeiro, A., & Spielman, I.B. (2020). Creating solitons with controllable and near-zero velocity in Bose-Einstein condensates. Physical review. A, 101 5.
 
 ## Outline
+* Features
+* API
+* Usage Examples
 
 ## Features
 
 ## API
 
 ## Usage Example
+```python
+    qmf = QuantumMatterFactory()
+    qmf.get_login()
+
+    fs = FristchSoliton(qmf)
+
+    phi = 1 # in pi units
+    fs.set_imprinting_phase(phi)
+
+    matter = ps.get_matter()
+
+    matter.submit(sim=True)
+    ```
