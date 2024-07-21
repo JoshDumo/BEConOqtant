@@ -52,7 +52,7 @@ Calling the object's _get_matter()_ function prepares the quantum matter landsca
 
 #### _FritschSoliton.set_imprinting_phase(phase)_
 ##### Usage
-This function allows setting or changing the phase of the FritschSoliton object. The imprinting phase is set (in units of $\pi$) in the range [1, 2] $\pi$. The specified phase is immediately set. 
+This function allows setting or changing the phase of the FritschSoliton object. The imprinting phase is set (in units of $\pi$) in the range [0, 2] $\pi$. The specified phase is immediately set. 
 
 Calling the object's _get_matter()_ function prepares the quantum matter landscapes, snapshots and lasers and returns a complete submittable job.
 
@@ -78,10 +78,18 @@ The potential is set to ramp up to the set _dimpling potential_ from 0 to 15 ms.
     phi = 1.1 # in pi units
     fs.set_imprinting_phase(phi)
 
-    ev_time = 10.0 # ms
+    ev_time = 5.0 # ms
     fs.set_evolution_time(ev_time)
 
     matter = fs.get_matter()
 
     matter.submit(sim=True)
+
+    # generate plain matter
+
+    plain = FritschSoliton(qmf, 0.0, 0.0, 5.0)
+
+    # generate matter without density engineering
+
+    phase_only = FritschSoliton(qmf, 0.0, 0.5, 5.0)
     ```
