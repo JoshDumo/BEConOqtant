@@ -38,7 +38,7 @@ class FritschSolitonMatter:
         phV = self.imprinting_phase / (2*t_p) # U/h = phi/(2*t_p)
         dW = 4.0 #micron
         pos = 0.0 #micron
-        tof = 15 #ms
+        tof = 10 #ms
         intrap = 80 #ms
         temp = 100 #nK
         evol_time = intrap + self.hold_time
