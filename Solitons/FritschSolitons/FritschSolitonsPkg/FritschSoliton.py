@@ -3,11 +3,15 @@ from .utils import RangeValidator
 class FritschSolitonMatter:
     def __init__(self, 
                  qmf, 
+                 soliton_position = 1.0,
                  dimpling_potential = 0.5, 
                  imprinting_phase = 1.0 , 
                  hold_time = 0, 
                  matter_name = "fritsch sol"):
         self.qmf = qmf
+
+        RangeValidator(soliton_position, "soliton_position", -20.0, 20.0)
+        self.soliton_position = soliton_position
 
         RangeValidator(dimpling_potential, "dimpling_potential", 0.0, 0.5)
         self.dimpling_potential = dimpling_potential
@@ -18,6 +22,10 @@ class FritschSolitonMatter:
         RangeValidator(hold_time, "hold_time", 0, 20.0)
         self.hold_time = hold_time
         self.matter_name = matter_name
+
+    def set_position(self, soliton_position):
+        RangeValidator(soliton_position, "soliton_position", -20.0, 20.0)
+        self.soliton_position = soliton_position
         
     def set_imprinting_phase(self, imprinting_phase):
         RangeValidator(imprinting_phase, "imprinting_phase", 0, 2.0)
@@ -34,12 +42,12 @@ class FritschSolitonMatter:
         
     def get_matter(self):
         dV = self.dimpling_potential
-        t_p = 0.7 #ms
+        t_p = 1.0 #ms
         phV = self.imprinting_phase / (2*t_p) # U/h = phi/(2*t_p)
-        dW = 4.0 #micron
-        pos = 0.0 #micron
+        dW = 2.0 #micron
+        pos = self.soliton_position
         tof = 10 #ms
-        intrap = 80 #ms
+        intrap = 40 #ms
         temp = 100 #nK
         evol_time = intrap + self.hold_time
         ramp_up = self.qmf.create_barrier(
@@ -51,14 +59,14 @@ class FritschSolitonMatter:
         )
 
         # phase imprint ne snapshot
-        positions = [-60, pos, pos, 60]
+        positions = [-60, 0, 0, 60]
         heights_ramp = [0, 0, phV, phV]
         snapshot_zero = self.qmf.create_snapshot(
             time=15.2, positions=positions, potentials=heights_ramp, interpolation="LINEAR"
         )
         snapshot_one = self.qmf.create_snapshot(
             time=15.9,
-            positions=[pos, pos],
+            positions=[0, 0],
             potentials=[0, 0],
             interpolation="LINEAR",
         )
