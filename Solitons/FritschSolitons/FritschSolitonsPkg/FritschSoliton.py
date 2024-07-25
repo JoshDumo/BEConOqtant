@@ -4,7 +4,7 @@ class FritschSolitonMatter:
     def __init__(self, 
                  qmf, 
                  soliton_position = 1.0,
-                 dimpling_potential = 0.5, 
+                 dimpling_potential = 1.0, 
                  imprinting_phase = 1.0 , 
                  hold_time = 0, 
                  matter_name = "fritsch sol"):
@@ -13,13 +13,13 @@ class FritschSolitonMatter:
         RangeValidator(soliton_position, "soliton_position", -20.0, 20.0)
         self.soliton_position = soliton_position
 
-        RangeValidator(dimpling_potential, "dimpling_potential", 0.0, 0.5)
+        RangeValidator(dimpling_potential, "dimpling_potential", 0.0, 2.0)
         self.dimpling_potential = dimpling_potential
         
         RangeValidator(imprinting_phase, "imprinting_phase", 0, 2.0)
         self.imprinting_phase = imprinting_phase
         
-        RangeValidator(hold_time, "hold_time", 0, 20.0)
+        RangeValidator(hold_time, "hold_time", 0, 60.0)
         self.hold_time = hold_time
         self.matter_name = matter_name
 
@@ -32,11 +32,11 @@ class FritschSolitonMatter:
         self.imprinting_phase = imprinting_phase
         
     def set_dimpling_potential(self, dimpling_potential):
-        RangeValidator(dimpling_potential, "dimpling_potential", 0.0, 0.5)
+        RangeValidator(dimpling_potential, "dimpling_potential", 0.0, 2.0)
         self.dimpling_potential = dimpling_potential
         
     def set_hold_time(self, hold_time):
-        RangeValidator(hold_time, "hold_time", 0, 20.0)
+        RangeValidator(hold_time, "hold_time", 0, 60.0)
         self.hold_time = hold_time
     
         

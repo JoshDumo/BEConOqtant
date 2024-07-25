@@ -54,7 +54,7 @@ Calling the object's _get_matter()_ function prepares the quantum matter landsca
 
 #### _FritschSoliton.set_dimpling_potential(potential)_
 ##### Usage
-This function allows setting or changing the dimpling potential of the FritschSoliton object. The potential can be set within the range [0, 0.5] kHz. The specified potential is immediately set. 
+This function allows setting or changing the dimpling potential of the FritschSoliton object. The potential can be set within the range [0, 2] kHz. The specified potential is immediately set. 
 
 Calling the object's _get_matter()_ function prepares the quantum matter landscapes, snapshots and lasers and returns a complete submittable job.
 
@@ -66,7 +66,7 @@ Calling the object's _get_matter()_ function prepares the quantum matter landsca
 
 #### _FritschSoliton.set_hold_time(hold_time)_
 ##### Usage
-This function allows setting or changing the hold time after evolution of the FritschSoliton object. The hold time can be set in the range [0, 20] ms.The specified evolution time is immediately set. 
+This function allows setting or changing the hold time after evolution of the FritschSoliton object. The hold time can be set in the range [0, 60] ms.The specified evolution time is immediately set. 
 
 Calling the object's _get_matter()_ function prepares the quantum matter landscapes, snapshots and lasers and returns a complete submittable job.
 
