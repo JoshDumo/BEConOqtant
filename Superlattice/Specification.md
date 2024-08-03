@@ -1,5 +1,8 @@
 # Patterned Loading Requirements Specification 
 This feature creates a superlattice potential over a BEC. Two independent lattices are applied in sequence over the BEC. Depending on the potentials and periods of the lattices, the BEC atoms can be selectively loaded or confined to some sites, and removed in others. This technique is referred to as Patterned Loading.
+
+* Peil, S.E., Porto, J.V., Tolra, B.L., Obrecht, J.M., King, B.E., Subbotin, M., Rolston, S., & Phillips, W.D. (2003). Patterned loading of a Bose-Einstein condensate into an optical lattice. Physical Review A, 67, 051603.
+
 ## Outline
 * Features
 * API
