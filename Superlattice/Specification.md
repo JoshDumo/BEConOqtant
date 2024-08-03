@@ -18,7 +18,7 @@ This feature creates a superlattice potential over a BEC. Two independent lattic
 
     The potentials will be loaded in a sequence as specified by the loading sequence for each independent lattice.
 
-* Provides a way to prepare a loading sequence for each independent lattice. The loading sequence is specified by a "gaussian" pulse with parameters of delay, edge "sharpness" and hold.
+* Provides a way to prepare a loading sequence for each independent lattice. The loading sequence is specified by a pulse with parameters of delay, rise time, and hold.
     
 * An internal algorithm uses the specified two independent lattices to prepare quantum matter landscapes, snapshots and lasers and produce a submittable job.
 
@@ -33,33 +33,34 @@ Requires a valid Quantum Matter Factory object.
 ##### _PatternedLoader(qmf).set_superlattice(long, short)_
 #### Usage
 This function sets the superlattice from two independent sinusoidal lattices _long_ and _short_. The preparation of independent lattices is provided by the services:
-1. _PatternedLoader(qmf).Lattice(potential, period, phase, delay, edge, hold)_, or
+1. _PatternedLoader(qmf).Lattice(potential, period, phase, delay, rise_time, hold)_, or
 2.  
     a. _PatternedLoader(qmf).Lattice().set_potential(potential, period, phase)_, and 
 
-    b. _PatternedLoader(qmf).Lattice().set_loading_seq(delay, edge, hold)_
+    b. _PatternedLoader(qmf).Lattice().set_loading_seq(delay, rise_time, hold)_
 #### Parameters
 ###### _potential_
-The peak potential of the independent lattice. During loading, the potential will be  swept from zero, to peak and back again to zero as specified by the loading sequence parameters _delay, edge and hold_.
+The peak potential of the independent lattice. During loading, the potential will be  swept from zero to peak, and back again to zero as specified by the loading sequence parameters _delay, rise_time and hold_.
 
-Ranges from 0 to 20 KHz (determined by max of Oqtant service)
+Ranges from 0 to 20 KHz (determined by max of Oqtant service).
+
 ##### _period_
 The period of the independent sinusoidal lattice.
 
-Ranges from 100us to 100ms in 100us resolution(detemined by laser resolution of Oqtant service).
+Ranges from 100us to 10ms in 100us resolution (detemined by laser resolution of Oqtant service).
 
 ##### _delay_
 Duration from zero before the start of the rising edge of the loading sequence.
 Ranges from 0 to 5.8 ms. It should still be possible to raise and fall an edge right to the max of the loading sequence 6ms.
 
-##### _edge_
-The transition time from 0 to peak potential, and from peak back to 0, 100us resolution. The edge is symmetric for rising and falling. The edge is defined as a "gaussian step."
+##### _rise_time_
+The transition time from 0 to peak potential, and from peak back to 0, 100us resolution. The edge is symmetric for rising and falling.
 
 ##### _hold_
 The duration to hold the peak potential after rising and before start of falling.
 Ranges from 0 to 5.8ms
 
-Combination of _delay, edge, and hold_ should be less than or equal to 6ms, the total duration of the loading seqquence.
+Combination of _delay, rise_time, and hold_ should be less than or equal to 6ms, the total duration of the loading seqquence.
 
 #### Name
 ##### _PatternedLoader(qmf).prepare_matter(name)_
