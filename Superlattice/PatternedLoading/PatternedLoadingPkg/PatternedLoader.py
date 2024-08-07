@@ -81,7 +81,8 @@ class PatternedLoader:
         total_time = np.round(total_time, 1)
         return total_time, total_pot
     
-    def get_matter(self):
+    def get_matter(self, matter_name="lattices"):
+        self.matter_name = matter_name
         timesL, potsL = self.__prepare_timepot_seq__(self.long_lattice.potential, 
                                                 self.long_lattice.delay, 
                                                 self.long_lattice.rise, 
