@@ -80,17 +80,17 @@ class AverageMatterPlots:
         avg_pixels, avg_slice, pixcal, x_pos, y_pos = self.__average_matter_images__()
         fig, axs = plt.subplots(nrows=2, sharex=True)
         fig.suptitle(self.title)
-        lox = int(len(x_pos)/2-(self.extent_x*pixcal))
-        hix = int(len(x_pos)/2+(self.extent_x*pixcal))
-        loy = int(len(y_pos)/2-(self.extent_y*pixcal))
-        hiy = int(len(y_pos)/2+(self.extent_y*pixcal))
-        im = axs[0].imshow(avg_pixels,
-                    extent=[x_pos[lox], x_pos[hix],
-                            y_pos[loy], y_pos[hiy]],
+        lox = int(len(x_pos)/2-(self.extent_x/pixcal))
+        hix = int(len(x_pos)/2+(self.extent_x/pixcal))
+        loy = int(len(y_pos)/2-(self.extent_y/pixcal))
+        hiy = int(len(y_pos)/2+(self.extent_y/pixcal))
+        im = axs[0].imshow(avg_pixels[loy:hiy, lox:hix],
+                            extent=[x_pos[lox], x_pos[hix],
+                                    y_pos[loy], y_pos[hiy]],
                     )
-        cbaxes = fig.add_axes([0.15, 0.6, 0.15, 0.02])
-        plt.colorbar(im, cax=cbaxes, ticks=[0.0, 1], orientation="horizontal")
-        cbaxes.tick_params(color="w", labelcolor="w")
+        cbaxes = fig.add_axes([1., 0.65, 0.01, 0.16])
+        plt.colorbar(im, cax=cbaxes, ticks=[0.0, 1], orientation="vertical")
+        cbaxes.tick_params(color="black", labelcolor="black")
         axs[1].plot(x_pos[lox:hix], avg_slice[lox:hix], label="Slice @ Y=0")
         axs[1].set_ylabel("Optical Depth")
         axs[1].set_yticks([0, 0.5, 1])
