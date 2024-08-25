@@ -127,10 +127,11 @@ class PatternedLoader:
         """
         lt, lp = self.long_lattice.get_lattice_dynamics()
         st, sp = self.short_lattice.get_lattice_dynamics()
-        plt.plot(lt, lp, label='long lattice')
-        plt.plot(st, sp, label='short lattice')
+        plt.plot(lt, lp, label="long lattice")
+        plt.plot(st, sp, label="short lattice")
         plt.xlabel("time (ms)")
         plt.ylabel("potential energy (kHz)")
+        plt.legend()
         plt.show()
 
     def get_matter(self, matter_name="lattices"):
